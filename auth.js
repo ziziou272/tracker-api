@@ -17,7 +17,6 @@ if (!JWT_SECRET) {
 }
 
 const routes = new Router();
-
 routes.use(bodyParser.json());
 
 const origin = process.env.UI_SERVER_ORIGIN || 'http://localhost:8000';
@@ -67,9 +66,7 @@ routes.post('/signin', async (req, res) => {
 });
 
 routes.post('/signout', async (req, res) => {
-  res.clearCookie('jwt', {
-    domain: process.env.COOKIE_DOMAIN,
-  });
+  res.clearCookie('jwt');
   res.json({ status: 'ok' });
 });
 
